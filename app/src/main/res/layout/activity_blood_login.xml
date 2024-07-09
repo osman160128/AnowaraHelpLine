@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+        <variable
+            name="bloodlogin"
+            type="com.example.anowarahelpline.blood.BloodLoginActivity" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".blood.BloodLoginActivity"
+        android:padding="30dp"
+        android:background="#F5F10F0F"
+        android:orientation="vertical">
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottieBloodLogin"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:lottie_url="https://assets7.lottiefiles.com/packages/lf20_qhrpysbIx8.json"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:transitionName="lottieBloodActivityAnimation"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="রক্ত দিন জীবন বাঁচান "
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:transitionName="txtBloodActivityAnimation"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/bloodLogin_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Email"
+            android:textColorHint="#ffffff"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodLign_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:hint="Password"
+            android:textColorHint="#ffffff"
+            app:passwordToggleEnabled="true"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodLignPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                >
+
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your blood group"
+            android:textColor="#ffffff"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            />
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <TextView
+                android:onClick="@{()->bloodlogin.aPostive()}"
+                android:id="@+id/bloodLoginApositive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="A+"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.aNegative()}"
+                android:id="@+id/bloodLoginAneagtive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="A-"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.bPostive()}"
+                android:id="@+id/bloodLoginBpositive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="B+"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.bNegative()}"
+                android:id="@+id/bloodLoginBneagtive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="B-"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+                />
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <TextView
+                android:onClick="@{()->bloodlogin.abPosataive()}"
+                android:id="@+id/bloodLoginABpositive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="AB+"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.abNegative()}"
+                android:id="@+id/bloodLoginABneagtive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="AB-"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.oPostavie()}"
+                android:id="@+id/bloodLoginOpositive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="O+"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:onClick="@{()->bloodlogin.oNegative()}"
+                android:id="@+id/bloodLoginOneagtive"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/stoke"
+                android:text="O-"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:layout_margin="5dp"
+                />
+            />
+        </LinearLayout>
+        <TextView
+            android:onClick="@{()->bloodlogin.loginFunction()}"
+            android:id="@+id/bloodLogingGo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:gravity="center"
+            android:background="@drawable/blood_donation"
+            android:textSize="40dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:textColor="#000000  "
+            />
+        <TextView
+            android:id="@+id/bloodLogingForgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password"
+            android:layout_gravity="right"
+            android:background="@drawable/stoke"
+            android:textSize="25dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
+            />
+        <TextView
+            android:onClick="@{()->bloodlogin.goToRegistration()}"
+            android:id="@+id/bloodLogingGotoRegistration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create new acount"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:textColor="#ffffff"
+            />
+
+
+
+    </LinearLayout>
+</layout>
+
+

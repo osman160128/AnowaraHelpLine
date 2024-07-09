@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AnowaraHelpLine"
+        tools:targetApi="31">
+        <activity
+            android:name=".blood.BloodHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".visitingplace.ShowVisitingPlace"
+            android:exported="false" />
+        <activity
+            android:name=".blood.AllBloodShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".nationalhelpline.NationalHelpLine"
+            android:exported="false" />
+        <activity
+            android:name=".blood.SelectBloodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodRegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodActivity4"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodShowActvity"
+            android:exported="false" />
+        <activity
+            android:name=".news.NewsPaperDetailsShowActivity"
+            android:exported="false" />
+        <activity
+            android:name=".visitingplace.VistingPlace"
+            android:exported="false" />
+        <activity
+            android:name=".ambulance.AmbulanceAcitivity"
+            android:exported="false" />
+        <activity
+            android:name=".blood.BloodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".news.NewsReporter"
+            android:exported="false" />
+        <activity
+            android:name=".grairent.GarirentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".hotel.HotelActivity"
+            android:exported="false" />
+        <activity
+            android:name=".resturant.ResturantAcitivity"
+            android:exported="false" />
+        <activity
+            android:name=".news.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".medicine.MedicineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".jororihelpline.JororiHelpLine"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.DoctoorsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".hospital.HospitalActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="5dp"
+    android:gravity="center"
+    android:id="@+id/hospitalLinerLayout"
+    android:background="@drawable/phonecall_background_hospital"
+    android:layout_margin="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        >
+
+    <TextView
+        android:id="@+id/hospitalName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CSCR"
+        android:textSize="27dp"
+        android:textColor="#04453F"
+        />
+    <TextView
+        android:id="@+id/hospitalPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone"
+        android:textSize="25dp"
+        android:textColor="#04453F"
+        />
+    <TextView
+        android:id="@+id/hospitalAdress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="20dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#04453F"
+        />
+    </LinearLayout>
+
+
+</LinearLayout>

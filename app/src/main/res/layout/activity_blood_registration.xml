@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="blood_registear"
+            type="com.example.anowarahelpline.blood.BloodRegistrationActivity" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".blood.BloodRegistrationActivity"
+        android:orientation="vertical"
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:orientation="vertical"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@drawable/cicrle_image_view"
+                />
+            <ImageView
+                android:id="@+id/bloodSignUpImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/profile"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="-70dp"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="User Name"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodSignUpName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Mobile Number"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodSignUpMobileNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                >
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Email"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodSignUpEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:inputType="textEmailAddress"
+                >
+            </com.google.android.material.textfield.TextInputEditText>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="Password"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodSIgnUpPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                >
+
+            </com.google.android.material.textfield.TextInputEditText>
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:hint="Conform password"
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bloodSIgnUpPasswordConform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <include
+
+            layout="@layout/blood_group_item"
+
+            />
+
+        <TextView
+            android:onClick="@{()->blood_registear.continueBtn()}"
+            android:id="@+id/signUpContinueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="40dp"
+            android:gravity="center"
+            android:background="@drawable/blood_donation"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:padding="10dp"
+            />
+
+
+    </LinearLayout>
+</layout>
+
+

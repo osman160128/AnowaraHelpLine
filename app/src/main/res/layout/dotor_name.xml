@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/banckgrounddesign"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/drNameTxt"
+            android:textStyle="bold|italic"
+            android:text="name"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/drDegreeTxt"
+            android:text="degree"
+
+            android:textSize="15dp"
+
+            android:layout_below="@+id/drNameTxt"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:textColor="#ffffff"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/drSpecialistTxt"
+            android:text="specialist"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_below="@+id/drDegreeTxt"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:textColor="#ffffff"
+            />
+         <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/drTimeTxt"
+                android:text="time"
+                android:textSize="15dp"
+                android:layout_below="@+id/drSpecialistTxt"
+                android:layout_marginLeft="5dp"
+                android:ellipsize="end"
+                android:textColor="#ffffff"
+                />
+
+        <TextView
+            android:id="@+id/callForName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Call"
+            android:textSize="25dp"
+            android:textAlignment="center"
+            android:background="@drawable/blood_donation"
+            android:layout_below="@+id/drTimeTxt"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:padding="7dp"
+            />
+
+        </RelativeLayout>
+
+</LinearLayout>

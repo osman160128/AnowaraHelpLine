@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "52657805026",
+    "project_id": "fast-e1b4a",
+    "storage_bucket": "fast-e1b4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52657805026:android:70ac872e067380fa93f0bb",
+        "android_client_info": {
+          "package_name": "com.example.anowarahelpline"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPR-j7ApX1givdcIlbwbzMB6wJKyTlni8"
+        },
+        {
+          "current_key": "AIzaSyDRvKL4S7QvPZSAtMnsXTEa_jkhryapLuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52657805026:android:9226c2ee8f69a1c893f0bb",
+        "android_client_info": {
+          "package_name": "com.example.fastfix"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPR-j7ApX1givdcIlbwbzMB6wJKyTlni8"
+        },
+        {
+          "current_key": "AIzaSyDRvKL4S7QvPZSAtMnsXTEa_jkhryapLuY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
