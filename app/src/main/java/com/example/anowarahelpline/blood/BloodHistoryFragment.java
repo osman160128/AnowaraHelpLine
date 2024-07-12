@@ -43,11 +43,11 @@ public class BloodHistoryFragment extends Fragment {
 
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String bloodGroup = cursor.getString(1);
+            String name = cursor.getString(1);
             String mobileNumber = cursor.getString(2);
             String email = cursor.getString(3);
             String imgUri = cursor.getString(4);
-            String name    = cursor.getString(5);
+            String bloodGroup    = cursor.getString(5);
 
             Log.d("sql",name);
             Log.d("sql",mobileNumber);

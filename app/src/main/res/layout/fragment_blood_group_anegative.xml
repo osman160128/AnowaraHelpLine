@@ -26,11 +26,16 @@
             android:layout_margin="5dp"
 
             >
-            <EditText
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/bloodSearch"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_weight="6"
+                app:searchHintIcon="@null"
+                app:queryHint="Search..."
+                app:searchIcon="@null"
                 android:background="#ffffff"
+
                 />
             <ImageView
                 android:layout_width="0dp"

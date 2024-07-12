@@ -3,6 +3,7 @@ package com.example.anowarahelpline.blood;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,8 @@ public class BloodGroupAnegative extends Fragment {
     BloodDonerAdapter bloodDonerAdapter;
     String currentUser;
 
+    SearchView searchView ;
+    ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +45,8 @@ public class BloodGroupAnegative extends Fragment {
         View view = inflater.inflate(R.layout.fragment_blood_group_anegative, container, false);
 
         currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        searchView = view.findViewById(R.id.bloodSearch);
         recyclerView = view.findViewById(R.id.showBloodRecylerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -68,11 +73,42 @@ public class BloodGroupAnegative extends Fragment {
                 fetchOnegative();
             }
         }
+
+
+        //work on searchView
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searhText(newText);
+                return true;
+            }
+        });
+
         return view;
     }
 
+    private void searhText(String newText) {
+        ArrayList<BloodGroupModel> dataSearchList = new ArrayList<>();
+        for (BloodGroupModel data : bLoodDonerArrayList){
+            if (data.getName().toLowerCase().contains(newText.toLowerCase())) {
+                dataSearchList.add(data);
+            }
+        }
+        if (dataSearchList.isEmpty()){
+            Toast.makeText(getContext(), "Not Found", Toast.LENGTH_SHORT).show();
+        } else {
+            bloodDonerAdapter.setSearchList(dataSearchList);
+        }
+    }
+
     private void fetchOnegative() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
+
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("O- Bood Group").child(currentUser);
@@ -98,7 +134,6 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetchOpositive() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("O+ Bood Group").child(currentUser);
 
@@ -124,7 +159,6 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetchABnegative() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("AB- Bood Group").child(currentUser);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -148,7 +182,6 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetchABpositive() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("AB+ Bood Group").child(currentUser);
 
@@ -173,7 +206,7 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetchBegative() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
+
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("B- Bood Group").child(currentUser);
 
@@ -198,9 +231,8 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetcBpositive() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("A+ Bood Group");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("B+ Bood Group");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -223,9 +255,8 @@ public class BloodGroupAnegative extends Fragment {
     }
 
     private void fetchAnegative() {
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("A+ Bood Group");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("A- Bood Group");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -249,8 +280,6 @@ public class BloodGroupAnegative extends Fragment {
 
     private void fetchApositive() {
 
-
-        ArrayList<BloodGroupModel> bLoodDonerArrayList = new ArrayList<>();
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("A+ Bood Group");
 

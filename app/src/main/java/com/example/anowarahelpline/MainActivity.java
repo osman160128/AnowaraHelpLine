@@ -24,6 +24,8 @@ import com.example.anowarahelpline.medicine.MedicineActivity;
 import com.example.anowarahelpline.news.NewsActivity;
 import com.example.anowarahelpline.news.NewsReporter;
 import com.example.anowarahelpline.resturant.ResturantAcitivity;
+import com.example.anowarahelpline.upozillaproshod.UnionProsihod;
+import com.example.anowarahelpline.upozillaproshod.UpzillaPorishedMember;
 import com.example.anowarahelpline.visitingplace.VistingPlace;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //LinerLayout
     LinearLayout hospitalBtn,doctorBtn,ambulanceBtn,proshahonBtn,medicineBtn,pallibidyutBtn,
             newsReporter,newsPaperBtn,trainTicketBtn,bloodBtn,busTicketBtn,jororiHelpLine,resturantBtn,hotelBtn,
-            gariRant,visitingPlaceBtn,jatioHelpcenter;
+            gariRant,visitingPlaceBtn,jonprotinidi,unionPorishodBtn;
 
     private int[] imageResources = {
             R.drawable.img_0,
@@ -93,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hotelBtn = findViewById(R.id.txtHotel);
         gariRant = findViewById(R.id.txtCar);
         visitingPlaceBtn=findViewById(R.id.txtDorshonoiyoJaiga);
-        jatioHelpcenter = findViewById(R.id.jatioHelpCenter);
+        jonprotinidi = findViewById(R.id.jatioHelpCenter);
+        unionPorishodBtn = findViewById(R.id.unionPorishod);
 
         //cliklistener add
         hospitalBtn.setOnClickListener(this);
@@ -108,7 +111,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         hotelBtn.setOnClickListener(this);
         gariRant.setOnClickListener(this);
         visitingPlaceBtn.setOnClickListener(this);
-        jatioHelpcenter.setOnClickListener(this);
+        jonprotinidi.setOnClickListener(this);
+        unionPorishodBtn.setOnClickListener(this);
 
 
 
@@ -183,6 +187,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(MainActivity.this, VistingPlace.class);
             startActivity(intent);
         }
-
+        else if (v.getId()==R.id.jatioHelpCenter) {
+            Intent intent = new Intent(MainActivity.this, UpzillaPorishedMember.class);
+            startActivity(intent);
+        }
+        else if (v.getId()==R.id.unionPorishod) {
+            Intent intent = new Intent(MainActivity.this, UnionProsihod.class);
+            startActivity(intent);
+        }
     }
 }

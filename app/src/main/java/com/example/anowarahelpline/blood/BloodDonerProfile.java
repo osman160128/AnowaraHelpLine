@@ -2,6 +2,9 @@ package com.example.anowarahelpline.blood;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -40,9 +43,6 @@ public class BloodDonerProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_blood_doner_profile, container, false);
-
-
-
 
         //if proifle fragment open this get the blood group save for next time
         //otherwise after first time open will show blood group is empty
@@ -176,9 +176,7 @@ public class BloodDonerProfile extends Fragment {
                             .into(imageView);
 
                 }
-                else {
-                    Toast.makeText(getContext(), "not exisit", Toast.LENGTH_SHORT).show();
-                }
+
             }
 
             @Override
@@ -187,7 +185,5 @@ public class BloodDonerProfile extends Fragment {
 
             }
         });
-
     }
-
 }

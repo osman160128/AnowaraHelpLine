@@ -132,4 +132,10 @@ public class BloodDonerAdapter extends RecyclerView.Adapter<BloodDonerAdapter.My
             messageBtn = itemView.findViewById(R.id.bloodDonerShowItemMassage);
         }
     }
+
+
+    public void setSearchList(ArrayList<BloodGroupModel> dataSearchList){
+        this.bLoodDonerArrayList = dataSearchList;
+        notifyDataSetChanged();
+    }
 }

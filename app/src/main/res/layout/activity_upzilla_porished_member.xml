@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="upzila"
+            type="com.example.anowarahelpline.upozillaproshod.UpzillaPorishedMember" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".upozillaproshod.UpzillaPorishedMember"
+        android:orientation="vertical">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/upzilaShangshodImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/saifuzzman"
+                    />
+
+                <TextView
+                    android:id="@+id/upzilaShangshodName"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaShangshodImg"
+                    android:ellipsize="end"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="সাইফুজ্জামান চৌধুরী জাবেদ"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/upzilaShangshodName"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaShangshodImg"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="5dp"
+                    android:text="সংসদ সদস্য"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:onClick="@{()->upzila.mp()}"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets3.lottiefiles.com/private_files/lf30_vpbcbwwm.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:transitionName="lottieBloodActivityAnimation"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="10dp"
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/upzilaMohilaShangshodImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/wasika"
+                    />
+
+                <TextView
+                    android:id="@+id/upzilaMohilaShangshodName"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaMohilaShangshodImg"
+                    android:ellipsize="end"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="ওয়াসিকা আয়শা খান"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/upzilaMohilaShangshodName"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaMohilaShangshodImg"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="5dp"
+                    android:text="সংরক্ষিত নারী সংসদ সদস্য"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:onClick="@{()->upzila.mohilaMp()}"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets3.lottiefiles.com/private_files/lf30_vpbcbwwm.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:transitionName="lottieBloodActivityAnimation"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="10dp"
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/upzilaCharimanImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/mojammel"
+                    />
+
+                <TextView
+                    android:id="@+id/upzilaCharimanName"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaCharimanImg"
+                    android:ellipsize="end"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="জনাব কাজী মোজাম্মেল হক"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/upzilaCharimanName"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaCharimanImg"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="5dp"
+                    android:text="উপজেলা চেয়ারম্যান"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:onClick="@{()->upzila.upzilaChirman()}"
+                    android:id="@+id/upzilaCharimanPhonr"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets3.lottiefiles.com/private_files/lf30_vpbcbwwm.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:transitionName="lottieBloodActivityAnimation"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="10dp"
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/upzilaBiasCharimanImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/manna"
+                    />
+
+                <TextView
+                    android:id="@+id/upzilaBiasCharimanName"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaBiasCharimanImg"
+                    android:ellipsize="end"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="জনাব এম এ মান্নান মান্না"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/upzilaBiasCharimanName"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaBiasCharimanImg"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="5dp"
+                    android:text="উপজেলা ভাইস চেয়ারম্যান"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:onClick="@{()->upzila.upzilabaisChirman()}"
+                    android:id="@+id/upzilaBiasCharimanPhone"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets3.lottiefiles.com/private_files/lf30_vpbcbwwm.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:transitionName="lottieBloodActivityAnimation"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="35sp"
+                    android:layout_marginRight="10dp"
+
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="5dp"
+            app:cardCornerRadius="5dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/upzilaMohilaBiasCharimanImg"
+                    android:layout_width="100dp"
+                    android:layout_height="120dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/chomki"
+                    />
+
+                <TextView
+                    android:id="@+id/upzilaMohilaBiasCharimanName"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaMohilaBiasCharimanImg"
+                    android:ellipsize="end"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingBottom="5dp"
+                    android:text="জনাব চুমকী চৌধুরী"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_below="@+id/upzilaMohilaBiasCharimanName"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_toRightOf="@+id/upzilaMohilaBiasCharimanImg"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="5dp"
+                    android:text="উপজেলা মহিলা ভাইস চেয়ারম্যান"
+
+                    android:textColor="@color/black"
+                    android:textSize="20dp" />
+                <com.airbnb.lottie.LottieAnimationView
+                    android:onClick="@{()->upzila.upzilaMohilaBaisChirman()}"
+                    android:id="@+id/upzilaMohilaBiasCharimanPhone"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    app:lottie_url="https://assets3.lottiefiles.com/private_files/lf30_vpbcbwwm.json"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    android:transitionName="lottieBloodActivityAnimation"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="25sp"
+                    android:layout_marginRight="10dp"
+
+                    />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

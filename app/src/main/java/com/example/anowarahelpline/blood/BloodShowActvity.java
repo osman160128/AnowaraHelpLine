@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.anowarahelpline.MainActivity;
 import com.example.anowarahelpline.R;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
@@ -126,9 +127,7 @@ public class BloodShowActvity extends AppCompatActivity {
                     fragmentTransaction1.commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
-                else if(item.getItemId()==R.id.navigationLogout){
 
-                }
 
 
                 return true;
