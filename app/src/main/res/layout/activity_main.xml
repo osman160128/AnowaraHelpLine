@@ -542,11 +542,11 @@
                         android:padding="5dp"
                         android:gravity="center"
                         >
-                        <com.airbnb.lottie.LottieAnimationView
+                        <ImageView
                             android:id="@+id/lottieJatoHelp"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
-                            app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_verkcp5o.json"
+                            android:src="@drawable/leader"
                             app:lottie_autoPlay="true"
                             app:lottie_loop="true"
                             />
@@ -659,18 +659,18 @@
                         android:padding="5dp"
                         android:gravity="center"
                         >
-                        <com.airbnb.lottie.LottieAnimationView
+                        <ImageView
                             android:id="@+id/lottieunionPorishod"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
-                            app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_verkcp5o.json"
+                            android:src="@drawable/unionmap"
                             app:lottie_autoPlay="true"
                             app:lottie_loop="true"
                             />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="জনপ্রতিনিধি"
+                            android:text="ইউনিয়ন পরিষদ"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 
@@ -693,18 +693,18 @@
                         android:padding="5dp"
                         android:gravity="center"
                         >
-                        <com.airbnb.lottie.LottieAnimationView
+                        <ImageView
                             android:id="@+id/lottiJpgajogWithUs"
                             android:layout_width="match_parent"
                             android:layout_height="55dp"
-                            app:lottie_url="https://assets8.lottiefiles.com/packages/lf20_verkcp5o.json"
+                            android:src="@drawable/chat"
                             app:lottie_autoPlay="true"
                             app:lottie_loop="true"
                             />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="জনপ্রতিনিধি"
+                            android:text="যোগযোগ"
                             android:textSize="16sp"
                             android:textStyle="bold" />
 

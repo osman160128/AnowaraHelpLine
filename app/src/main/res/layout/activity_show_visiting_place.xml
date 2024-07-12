@@ -45,10 +45,12 @@
         android:id="@+id/showVisitingText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="হিলটপ পার্ক"
+        android:text=""
         android:textSize="18dp"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
+        android:ellipsize="end"
+
         />
 
     </LinearLayout>

@@ -16,6 +16,9 @@
         android:theme="@style/Theme.AnowaraHelpLine"
         tools:targetApi="31">
         <activity
+            android:name=".us.JogajogwithUs"
+            android:exported="false" />
+        <activity
             android:name=".upozillaproshod.UnioinPorishiodMamberInfo"
             android:exported="false" />
         <activity

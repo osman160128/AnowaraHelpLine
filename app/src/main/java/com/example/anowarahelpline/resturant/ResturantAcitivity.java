@@ -24,7 +24,7 @@ public class ResturantAcitivity extends AppCompatActivity {
         alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String phoneNumber = "+8801873148453";
+                String phoneNumber = "+8801892037702";
 
                 // Create an intent with the action ACTION_VIEW
                 Intent intent = new Intent(Intent.ACTION_VIEW);

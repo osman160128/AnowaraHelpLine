@@ -26,6 +26,7 @@ import com.example.anowarahelpline.news.NewsReporter;
 import com.example.anowarahelpline.resturant.ResturantAcitivity;
 import com.example.anowarahelpline.upozillaproshod.UnionProsihod;
 import com.example.anowarahelpline.upozillaproshod.UpzillaPorishedMember;
+import com.example.anowarahelpline.us.JogajogwithUs;
 import com.example.anowarahelpline.visitingplace.VistingPlace;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //LinerLayout
     LinearLayout hospitalBtn,doctorBtn,ambulanceBtn,proshahonBtn,medicineBtn,pallibidyutBtn,
             newsReporter,newsPaperBtn,trainTicketBtn,bloodBtn,busTicketBtn,jororiHelpLine,resturantBtn,hotelBtn,
-            gariRant,visitingPlaceBtn,jonprotinidi,unionPorishodBtn;
+            gariRant,visitingPlaceBtn,jonprotinidi,unionPorishodBtn,jogajogWithUsBtn;
 
     private int[] imageResources = {
             R.drawable.img_0,
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitingPlaceBtn=findViewById(R.id.txtDorshonoiyoJaiga);
         jonprotinidi = findViewById(R.id.jatioHelpCenter);
         unionPorishodBtn = findViewById(R.id.unionPorishod);
+        jogajogWithUsBtn = findViewById(R.id.jogagjogWithUs);
 
         //cliklistener add
         hospitalBtn.setOnClickListener(this);
@@ -113,6 +115,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         visitingPlaceBtn.setOnClickListener(this);
         jonprotinidi.setOnClickListener(this);
         unionPorishodBtn.setOnClickListener(this);
+        jogajogWithUsBtn.setOnClickListener(this);
 
 
 
@@ -193,6 +196,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (v.getId()==R.id.unionPorishod) {
             Intent intent = new Intent(MainActivity.this, UnionProsihod.class);
+            startActivity(intent);
+        } else if (v.getId()==R.id.jogagjogWithUs) {
+            Intent intent = new Intent(MainActivity.this, JogajogwithUs.class);
             startActivity(intent);
         }
     }
