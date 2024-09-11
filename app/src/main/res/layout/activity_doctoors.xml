@@ -6,10 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".hospital.DoctoorsActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:background="@drawable/loginstoke"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="7"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/doctorSearch"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="6"
+            android:background="#ffffff"
+            app:queryHint="Search..."
+            app:searchHintIcon="@null"
+            app:searchIcon="@null"
+
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/searcicon" />
+    </LinearLayout>
     <ListView
         android:id="@+id/drListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
         />
 
     <ProgressBar

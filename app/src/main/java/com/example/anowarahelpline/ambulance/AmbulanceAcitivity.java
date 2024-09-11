@@ -13,6 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -84,7 +85,9 @@ public class AmbulanceAcitivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                throw new RuntimeException(error);
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(AmbulanceAcitivity.this, "Network timeout. Please try again.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

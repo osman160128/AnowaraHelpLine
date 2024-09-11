@@ -1,6 +1,7 @@
 package com.example.anowarahelpline.hospital;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,8 +31,11 @@ public class HospitalActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private ArrayList<HashMap<String, String>> hospitalArraylist = new ArrayList<>();
+    ArrayList<HashMap<String, String>> filteredArrayList = new ArrayList<>();
     private HospitalRecylerView hospitalRecylerView;
     HashMap<String, String> hospitalHashMap;
+
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class HospitalActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.hospital_recylerView);
         progressBar = findViewById(R.id.hospitalProgressBar);
+        searchView = findViewById(R.id.hospitalSearch);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -65,9 +70,10 @@ public class HospitalActivity extends AppCompatActivity {
                         hospitalArraylist.add(hospitalHashMap);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Log.d("error","error is "+e.toString());
+                        Log.d("error", "error is " + e.toString());
                     }
                 }
+
                 hospitalRecylerView = new HospitalRecylerView(HospitalActivity.this, hospitalArraylist);
                 recyclerView.setAdapter(hospitalRecylerView);
             }
@@ -75,11 +81,40 @@ public class HospitalActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(HospitalActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
-                Log.d("error","error is "+error.toString());
+                Toast.makeText(HospitalActivity.this, "Network timeout. Please try again.", Toast.LENGTH_SHORT).show();
+
             }
         });
-
         queue.add(jsonArrayRequest);
+
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searhText(newText);
+                return true;
+            }
+        });
+    }
+
+    private void searhText(String newText) {
+        ArrayList<HashMap<String, String>> dataSearchList = new ArrayList<>();
+        for (HashMap<String, String> data : hospitalArraylist){
+            //this wiil cheack that if our search item is there
+
+            if (data.get("name").toLowerCase().contains(newText.toLowerCase())) {
+                dataSearchList.add(data);
+            }
+        }
+        if (dataSearchList.isEmpty()){
+            Toast.makeText(HospitalActivity.this, "Not Found", Toast.LENGTH_SHORT).show();
+        } else {
+            hospitalRecylerView.setSearchList(dataSearchList);
+        }
     }
 }

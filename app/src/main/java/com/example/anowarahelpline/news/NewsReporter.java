@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.Request;
@@ -78,7 +79,9 @@ public class NewsReporter extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                throw new RuntimeException(error);
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(NewsReporter.this, "Network timeout. Please try again.", Toast.LENGTH_SHORT).show();
+
             }
         });
 

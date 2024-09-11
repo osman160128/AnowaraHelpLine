@@ -136,6 +136,10 @@ public class BloodShowActvity extends AppCompatActivity {
     }
 
     private void fetchDonerInfo() {
+
+        //this send data to BloodActivity that he already enter the this activity
+        BloodActivity.isAlreadyEnter=true;
+
         if (bloodGroup.equals("A+ Bood Group")) {
             fetchDataFromAPosativeFireBase();
         } else if (bloodGroup.equals("A- Bood Group")) {

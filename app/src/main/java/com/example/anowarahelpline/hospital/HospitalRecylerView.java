@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.anowarahelpline.R;
+import com.example.anowarahelpline.blood.BloodGroupModel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,5 +76,9 @@ public class HospitalRecylerView extends RecyclerView.Adapter<HospitalRecylerVie
     public void setAnimation(View itemView, int position) {
         Animation slideIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
         itemView.startAnimation(slideIn);
+    }
+    public void setSearchList(ArrayList<HashMap<String,String>> dataSearchList){
+        this.hospitalModels = dataSearchList;
+        notifyDataSetChanged();
     }
 }

@@ -11,6 +11,7 @@ import com.example.anowarahelpline.R;
 
 public class BloodActivity extends AppCompatActivity {
 
+    static boolean isAlreadyEnter=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +21,7 @@ public class BloodActivity extends AppCompatActivity {
 
         boolean alreadyShows = sharedPreferences.getBoolean("is already shows", false);
 
-        if(alreadyShows){
+        if(alreadyShows && isAlreadyEnter){
             Intent intent = new Intent(BloodActivity.this,BloodLoginActivity.class);
             startActivity(intent);
             // Optionally finish the current activity

@@ -177,6 +177,7 @@ public class BloodLoginActivity extends AppCompatActivity {
         // Apply the changes
         editor.apply();
         startActivity(new Intent(BloodLoginActivity.this, BloodRegistrationActivity.class));
+
     }
 
     //select blood button
@@ -338,6 +339,7 @@ public class BloodLoginActivity extends AppCompatActivity {
                 if (snapshot.exists()) {
 
                     startActivity(new Intent(BloodLoginActivity.this,BloodShowActvity.class));
+                    finish();
 
                 } else {
                     //  this alart dialog show if you choose wrong blood blodGroup;
