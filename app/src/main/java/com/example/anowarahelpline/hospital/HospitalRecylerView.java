@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class HospitalRecylerView extends RecyclerView.Adapter<HospitalRecylerView.MyViewHospital> {
-    private static ClickListener clickListener;
+
 
     private Context context;
     private ArrayList<HashMap<String,String>> hospitalModels;
@@ -42,6 +42,8 @@ public class HospitalRecylerView extends RecyclerView.Adapter<HospitalRecylerVie
         holder.nametxt.setText(hospitalModel.get("name"));
         holder.addresstxt.setText(hospitalModel.get("address"));
         holder.phonetxt.setText(hospitalModel.get("phone"));
+
+        setAnimation(holder.itemView,position);
     }
 
     @Override
@@ -49,28 +51,15 @@ public class HospitalRecylerView extends RecyclerView.Adapter<HospitalRecylerVie
         return hospitalModels.size();
     }
 
-    public class MyViewHospital extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHospital extends RecyclerView.ViewHolder{
         TextView nametxt, addresstxt, phonetxt;
         public MyViewHospital(@NonNull View itemView) {
             super(itemView);
             nametxt = itemView.findViewById(R.id.hospitalName);
             addresstxt = itemView.findViewById(R.id.hospitalAdress);
             phonetxt = itemView.findViewById(R.id.hospitalPhone);
-            itemView.setOnClickListener(this);
+
         }
-
-        @Override
-        public void onClick(View view) {
-            clickListener.onItemClik(getAdapterPosition(), view);
-        }
-    }
-
-    public interface ClickListener {
-        void onItemClik(int position, View view);
-    }
-
-    public void setOnItemClickListener(ClickListener clickListener) {
-        HospitalRecylerView.clickListener = clickListener;
     }
 
     public void setAnimation(View itemView, int position) {

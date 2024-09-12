@@ -28,20 +28,21 @@
                 android:id="@+id/chottogramHelpLine"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="প্রিয় চট্টগ্রাম বাসি"
+                android:text="হ্যালো আনোয়ারা বাসি"
                 android:textSize="25sp"
                 />
             <TextView
                 android:id="@+id/chottogramHelpLine2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="চট্টগ্রাম এখন আপনার হাতে"
+                android:text=" এখন আপনার হাতে"
                 android:textSize="20sp"
                 />
 
         </LinearLayout>
         <!--Chttagrom help line head line 999 -->
         <LinearLayout
+            android:id="@+id/emargancyHotlinebtn"
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"

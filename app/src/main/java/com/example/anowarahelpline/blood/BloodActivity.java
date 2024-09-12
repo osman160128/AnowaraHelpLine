@@ -39,7 +39,7 @@ public class BloodActivity extends AppCompatActivity {
                     // Apply the changes
                     editor.apply();
                     // Intent to start the second activity
-                    Intent intent = new Intent(BloodActivity.this,BloodActivity2.class);
+                    Intent intent = new Intent(BloodActivity.this,BloodLoginActivity.class);
                     startActivity(intent);
                     // Optionally finish the current activity
                     finish();

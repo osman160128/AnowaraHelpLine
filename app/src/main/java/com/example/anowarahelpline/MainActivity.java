@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.anowarahelpline.ambulance.AmbulanceAcitivity;
 import com.example.anowarahelpline.blood.BloodActivity;
+import com.example.anowarahelpline.blood.BloodLoginActivity;
 import com.example.anowarahelpline.grairent.GarirentActivity;
 import com.example.anowarahelpline.hospital.DoctoorsActivity;
 import com.example.anowarahelpline.hospital.HospitalActivity;
@@ -41,11 +43,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int delayTime = 2000; // Delay between image transitions in milliseconds
     private int currentPage = 0;
 
-
     //LinerLayout
     LinearLayout hospitalBtn,doctorBtn,ambulanceBtn,proshahonBtn,medicineBtn,pallibidyutBtn,
             newsReporter,newsPaperBtn,trainTicketBtn,bloodBtn,busTicketBtn,jororiHelpLine,resturantBtn,hotelBtn,
-            gariRant,visitingPlaceBtn,jonprotinidi,unionPorishodBtn,jogajogWithUsBtn;
+            gariRant,visitingPlaceBtn,jonprotinidi,unionPorishodBtn,jogajogWithUsBtn,emargancyBtn;
 
     private int[] imageResources = {
             R.drawable.img_0,
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jonprotinidi = findViewById(R.id.jatioHelpCenter);
         unionPorishodBtn = findViewById(R.id.unionPorishod);
         jogajogWithUsBtn = findViewById(R.id.jogagjogWithUs);
+        emargancyBtn = findViewById(R.id.emargancyHotlinebtn);
 
         //cliklistener add
         hospitalBtn.setOnClickListener(this);
@@ -116,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         jonprotinidi.setOnClickListener(this);
         unionPorishodBtn.setOnClickListener(this);
         jogajogWithUsBtn.setOnClickListener(this);
+        emargancyBtn.setOnClickListener(this);
 
 
 
@@ -163,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
         else if (v.getId()==R.id.txtBlood) {
-            Intent intent = new Intent(MainActivity.this, BloodActivity.class);
+            Intent intent = new Intent(MainActivity.this, BloodLoginActivity.class);
             startActivity(intent);
         }
         else if (v.getId()==R.id.txtHalpeLine) {
@@ -199,6 +202,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         } else if (v.getId()==R.id.jogagjogWithUs) {
             Intent intent = new Intent(MainActivity.this, JogajogwithUs.class);
+            startActivity(intent);
+        }else if (v.getId()==R.id.emargancyHotlinebtn) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:999"));
             startActivity(intent);
         }
     }
