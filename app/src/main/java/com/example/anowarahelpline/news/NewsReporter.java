@@ -50,18 +50,18 @@ public class NewsReporter extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(NewsReporter.this);
 
-        String url = "https://osmanparvej.000webhostapp.com/apps/chittagongHelpLine/repoerter.json";
+        String url = "https://osman160128.github.io/newsrepoter/repoter.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 progressBar.setVisibility(View.GONE);
-                for (int i = 0; i < response.length(); i++) {
+                for (int i = 0; i < response.length()-1; i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        String repoterName = jsonObject.getString("name");
-                        String repoterNewsName = jsonObject.getString("news");
-                        String repoterNumber = jsonObject.getString("number");
+                        String repoterName = jsonObject.getString("Name");
+                        String repoterNewsName = jsonObject.getString("newspaper");
+                        String repoterNumber = jsonObject.getString("phone");
 
                         repoterHashMap = new HashMap<>();
                         repoterHashMap.put("name", repoterName);

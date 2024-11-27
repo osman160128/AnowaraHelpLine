@@ -37,8 +37,6 @@ public class AmbulanceAcitivity extends AppCompatActivity {
 
     ListView listView;
 
-
-
     HashMap<String, String> ambulanceHashMap;
 
     ArrayList<HashMap<String, String>> ambulanceArraylist = new ArrayList<>();
@@ -54,7 +52,7 @@ public class AmbulanceAcitivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(AmbulanceAcitivity.this);
 
-        String url = "https://osmanparvej.000webhostapp.com/apps/chittagongHelpLine/ambulanceList.json";
+        String url = "https://osman160128.github.io/Ambulance/ambulanceapi.json";
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
@@ -63,15 +61,12 @@ public class AmbulanceAcitivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        String ambulanceName = jsonObject.getString("title");
+                        String ambulanceName = jsonObject.getString("name ");
                         String ambulancePhone = jsonObject.getString("phone");
-                        String ambulanceLocation = jsonObject.getString("location");
-
 
                         ambulanceHashMap = new HashMap<>();
                         ambulanceHashMap.put("name", ambulanceName);
                         ambulanceHashMap.put("phone", ambulancePhone);
-                        ambulanceHashMap.put("location", ambulanceLocation);
                         ambulanceArraylist.add(ambulanceHashMap);
 
 
@@ -122,18 +117,16 @@ public class AmbulanceAcitivity extends AppCompatActivity {
 
             TextView ambulanceName = view.findViewById(R.id.ambulanceListViewName);
             TextView ambulancePhone = view.findViewById(R.id.ambulanceListViewPhone);
-            TextView ambulanceLocation = view.findViewById(R.id.ambulanceListViewLocation);
+
             CardView call_ambulance = view.findViewById(R.id.call_ambulance);
 
             ambulanceHashMap = ambulanceArraylist.get(position);
 
             String name = ambulanceHashMap.get("name");
             String phone = ambulanceHashMap.get("phone");
-            String location = ambulanceHashMap.get("location");
 
             ambulanceName.setText(name);
             ambulancePhone.setText(phone);
-            ambulanceLocation.setText(location);
             call_ambulance.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

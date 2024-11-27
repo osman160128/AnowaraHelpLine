@@ -46,7 +46,10 @@ public class SelectBloodActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     String currentUser;
 
+
+
     Uri downloadImgUri;
+    static StorageReference imageRef;
 
     ProgressBar progressBar;
     @Override
@@ -213,13 +216,14 @@ public class SelectBloodActivity extends AppCompatActivity {
     //upload image to firebase sotrage
     private void uploadImgToFirebase() {
 
-        StorageReference ref = storageReference.child(mAuth.getCurrentUser().getUid() + "." + getFileExtension(Uri.parse(imgUri)));;
+        imageRef = storageReference.child("profile image /"+mAuth.getCurrentUser().getUid() + "." + getFileExtension(Uri.parse(imgUri)));;
 
-        ref.putFile(Uri.parse(imgUri)).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+        imageRef.putFile(Uri.parse(imgUri)).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
 
-                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
 
@@ -254,7 +258,7 @@ public class SelectBloodActivity extends AppCompatActivity {
                             BloodDonerProfile.bloodGroup="O+ Bood Group";
                             BloodShowActvity.bloodGroup="O+ Bood Group";
                             sendDataToOPostive();
-                        } else if (bloodGroup.equals("O")) {
+                        } else if (bloodGroup.equals("O-")) {
                             BloodDonerProfile.bloodGroup="O- Bood Group";
                             BloodShowActvity.bloodGroup="O- Bood Group";
                             sendDataToONeagtiave();

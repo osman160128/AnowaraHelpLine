@@ -165,6 +165,17 @@
                 android:layout_below="@+id/email_icon"
                 android:layout_marginBottom="10dp"
                 />
+            <TextView
+                android:id="@+id/blodDonerprofileDeleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete account"
+                android:textSize="15sp"
+                android:maxLines="1"
+                android:textAlignment="textEnd"
+                android:ellipsize="end"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/view5"/>
 
         </RelativeLayout>
 

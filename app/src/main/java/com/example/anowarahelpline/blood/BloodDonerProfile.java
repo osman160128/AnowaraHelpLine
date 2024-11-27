@@ -2,6 +2,8 @@ package com.example.anowarahelpline.blood;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static com.example.anowarahelpline.blood.SelectBloodActivity.imageRef;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,16 +17,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.anowarahelpline.MainActivity;
 import com.example.anowarahelpline.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -34,9 +47,11 @@ public class BloodDonerProfile extends Fragment {
     public static String bloodGroup ="";
     FirebaseAuth mAuth;
     String currentUser;
-    TextView txtName,txtBloodGroup,txtMobileNumber,txtUpozila,txtEmail,bloodDonateDate;
+    TextView txtName,txtBloodGroup,txtMobileNumber,txtUpozila,txtEmail,deleteBtn;
     String setName,setBloodGroup,setMobileNumber,setUpozila,setEmail,setImage,setBlooDOnateDate;
     CircleImageView imageView;
+
+    String imgUrl,email;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,6 +86,7 @@ public class BloodDonerProfile extends Fragment {
         txtMobileNumber = view.findViewById(R.id.blodDonerprofilePhone);
         txtEmail = view.findViewById(R.id.blodDonerprofileEmail);
         imageView = view.findViewById(R.id.blodDonerProfileImg);
+        deleteBtn = view.findViewById(R.id.blodDonerprofileDeleteBtn);
 
         mAuth = FirebaseAuth.getInstance();
         currentUser=mAuth.getCurrentUser().getUid();
@@ -94,7 +110,130 @@ public class BloodDonerProfile extends Fragment {
         } else if (bloodGroup.equals("O- Bood Group")) {
             fetchDataFromONeagtiave();
         }
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showalartBeforeDelete();
+            }
+        });
         return view;
+    }
+
+    private void showalartBeforeDelete() {
+        final EditText passwordEditText = new EditText(getContext());
+        passwordEditText.setHint("Enter your password");
+
+        new AlertDialog.Builder(getContext())
+                .setTitle("Confirm Password")
+                .setMessage("Please enter your password to delete your account.")
+                .setView(passwordEditText)
+                .setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String password = passwordEditText.getText().toString().trim();
+                        if (!password.isEmpty()) {
+                            reAuthenticateAndDelete(password); // Call the re-authentication method
+                        } else {
+                            Toast.makeText(getContext(), "Password cannot be empty.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+
+    }
+
+    private void reAuthenticateAndDelete(String password) {
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {// Get the email address
+            AuthCredential credential = EmailAuthProvider.getCredential(email, password);
+
+            // Re-authenticate
+            user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Proceed with deletion if re-authentication succeeds
+                        deleteUserAccount();
+                    } else {
+                        // Handle re-authentication failure
+                        Toast.makeText(getContext(), "password is worng.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void deleteUserAccount() {
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if (user != null) {
+            // Step 1: Delete user data from Firebase Authentication
+            user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Get a reference to the SharedPreferences object
+                        SharedPreferences sharedPreferences = getContext().getSharedPreferences("BloodSharedPref", MODE_PRIVATE);
+                        // Get an editor to write to the SharedPreferences
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("is already shows", false);
+                        // Apply the changes
+                        editor.apply();
+                        // Step 5: Sign out and redirect to login screen
+                        mAuth.signOut();
+
+                        deleteImageFromStorage(imgUrl);
+                        //databse refrence
+                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(bloodGroup).child(currentUser);
+                        databaseReference.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(getContext(), "Account deleted successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                startActivity(intent);
+                                getActivity().finish();
+                            }
+                        });
+
+                    } else {
+                        if (task.getException() != null) {
+                            String error = task.getException().getMessage();
+                            Toast.makeText(getContext(), "Error: " + error, Toast.LENGTH_SHORT).show();
+                            Log.d("delete",error);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    private void deleteImageFromStorage(String imgUrl) {
+        // Step 3: Get the storage reference from the image URL
+        StorageReference storageReference = imageRef;
+
+        // Step 3: Delete the image from Firebase Storage
+        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                // Image deleted successfully
+                Log.d("delete", "Image deleted successfully.");
+
+                // Proceed with deleting user data from Firebase Authentication and Database
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                // Failed to delete the image
+                Log.d("delete", "Failed to delete image: " + e.getMessage());
+                Toast.makeText(getContext(), "Failed to delete image: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                // Proceed with deleting user data anyway (if desired)
+
+            }
+        });
     }
 
     private void fetchDataFromONeagtiave() {
@@ -146,20 +285,16 @@ public class BloodDonerProfile extends Fragment {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(getContext(), "pppppppp", Toast.LENGTH_SHORT).show();
                 if (snapshot.exists()){
 
-
-                        Toast.makeText(getContext(), "exisit too", Toast.LENGTH_SHORT).show();
                         BloodGroupModel bloodGroupModel = snapshot.getValue(BloodGroupModel.class);
 
                         String name = bloodGroupModel.getName();
                         String bloodGroup = bloodGroupModel.getBloodGroup();
-                        String  email = bloodGroupModel.getEmail();
-                        String imgUrl = bloodGroupModel.getDownloadImgUri();
+                        email = bloodGroupModel.getEmail();
+                        imgUrl = bloodGroupModel.getDownloadImgUri();
                         String mobileNumber = bloodGroupModel.getMobileNumber();
 
-                        Log.d("img",imgUrl);
                         if(imgUrl.isEmpty()){
                             Toast.makeText(getContext(), "Img is empty" , Toast.LENGTH_SHORT).show();
                         }

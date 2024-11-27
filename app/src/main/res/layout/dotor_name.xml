@@ -61,6 +61,17 @@
                 android:ellipsize="end"
                 android:textColor="#ffffff"
                 />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/drHospitalName"
+            android:text="time"
+            android:textSize="15dp"
+            android:layout_below="@+id/drTimeTxt"
+            android:layout_marginLeft="5dp"
+            android:ellipsize="end"
+            android:textColor="#ffffff"
+            />
 
         <TextView
             android:id="@+id/callForName"
@@ -70,7 +81,7 @@
             android:textSize="25dp"
             android:textAlignment="center"
             android:background="@drawable/blood_donation"
-            android:layout_below="@+id/drTimeTxt"
+            android:layout_below="@+id/drHospitalName"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"

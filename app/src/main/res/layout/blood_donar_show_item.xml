@@ -3,9 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="3dp"
-    app:cardCornerRadius="12dp"
-    android:elevation="5dp"
+    app:cardCornerRadius="6dp"
+    android:elevation="8dp"
     app:cardUseCompatPadding="true"
     >
    <RelativeLayout
@@ -14,9 +13,9 @@
        >
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/bloodDonerShowItemImg"
-        android:layout_width="100dp"
-        android:layout_height="120dp"
-        android:layout_marginRight="10dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="10dp"
         />
 
        <TextView
@@ -42,7 +41,7 @@
        <TextView
            android:id="@+id/bloodDonerShowItemBLoodGroup"
            android:layout_width="80dp"
-           android:layout_height="wrap_content"
+           android:layout_height="37dp"
            android:gravity="center"
            android:layout_below="@+id/bloodDonerShowItemName"
            android:layout_marginStart="3dp"
@@ -63,21 +62,20 @@
            android:id="@+id/bloodDonerShowItemPhoneLogo"
            android:layout_width="37dp"
            android:layout_height="37dp"
-           android:src="@drawable/phone_icon"
+           android:layout_below="@+id/bloodDonerShowItemName"
+           android:layout_marginLeft="7dp"
+           android:layout_marginTop="8dp"
+           android:layout_toRightOf="@id/bloodDonerShowItemBLoodGroup"
            android:padding="5dp"
            android:scaleType="fitXY"
-           android:layout_marginTop="5dp"
-           android:layout_below="@+id/bloodDonerShowItemName"
-           android:layout_marginLeft="5dp"
-           android:layout_toRightOf="@id/bloodDonerShowItemBLoodGroup"
-           />
+           android:src="@drawable/phone_icon" />
 
        <ImageView
            android:id="@+id/bloodDonerShowItemMassage"
            android:layout_width="30dp"
            android:layout_height="30dp"
            android:src="@drawable/chat_logo"
-           android:layout_marginTop="5dp"
+           android:layout_marginTop="9dp"
            android:layout_below="@+id/bloodDonerShowItemName"
            android:layout_toRightOf="@id/bloodDonerShowItemPhoneLogo"
            android:layout_marginLeft="20dp"

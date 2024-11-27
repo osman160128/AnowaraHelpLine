@@ -58,14 +58,20 @@ public class HospitalActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JSONObject jsonObject = response.getJSONObject(i);
-                        String hospitalName = jsonObject.getString("name");
+                        String hospitalName = jsonObject.getString("hospitalname");
                         String hospitalAddress = jsonObject.getString("address");
-                        String hospitalPhone = jsonObject.getString("phone");
+                        String hospitalPhone1 = jsonObject.getString("phone 1");
+                        String hospitalPhone2 = jsonObject.getString("phone 2");
+                        String hospitalPhone3 = jsonObject.getString("phone 3");
+                        String hospitalPhone4 = jsonObject.getString("phone 4");
 
                         hospitalHashMap = new HashMap<>();
                         hospitalHashMap.put("name", hospitalName);
                         hospitalHashMap.put("address", hospitalAddress);
-                        hospitalHashMap.put("phone", hospitalPhone);
+                        hospitalHashMap.put("phone1", hospitalPhone1);
+                        hospitalHashMap.put("phone2", hospitalPhone2);
+                        hospitalHashMap.put("phone3", hospitalPhone3);
+                        hospitalHashMap.put("phone4", hospitalPhone4);
 
                         hospitalArraylist.add(hospitalHashMap);
                     } catch (JSONException e) {
@@ -81,7 +87,8 @@ public class HospitalActivity extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(HospitalActivity.this, "Network timeout. Please try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HospitalActivity.this, ""+error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("error",""+error.toString());
 
             }
         });
@@ -107,7 +114,7 @@ public class HospitalActivity extends AppCompatActivity {
         for (HashMap<String, String> data : hospitalArraylist){
             //this wiil cheack that if our search item is there
 
-            if (data.get("name").toLowerCase().contains(newText.toLowerCase())) {
+            if ((data.get("hospitalname").toLowerCase().contains(newText.toLowerCase()))) {
                 dataSearchList.add(data);
             }
         }

@@ -42,7 +42,7 @@ public class ShowVisitingPlace extends AppCompatActivity {
 
         } else if (visitingPlace.equals("tunnal road")) {
             imageView.setImageResource(R.drawable.tunnel);
-            txtTitle.setText("বঙ্গবন্ধু শেখ মুজিবুর রহমান টানেল");
+            txtTitle.setText("কর্ণফুলী টানেল");
 
         }
         else if (visitingPlace.equals("hiltop park")) {
@@ -50,12 +50,20 @@ public class ShowVisitingPlace extends AppCompatActivity {
             textView.setText(""+VisitingPlaceInfo.hiltoPark);
             txtTitle.setText("হিলটপ পার্ক");
 
-
-
         }
         else if (visitingPlace.equals("menna garden")) {
             imageView.setImageResource(R.drawable.mennagarden);
             txtTitle.setText("মেন্না গার্ডেন ");
+
+        }else if (visitingPlace.equals("mazar")) {
+            imageView.setImageResource(R.drawable.mazarshorif);
+            txtTitle.setText("হযরত শাহ মোহছেন আউলিয়া (রহঃ) মাজার");
+            textView.setText(""+VisitingPlaceInfo.mazar);
+
+        } else if (visitingPlace.equals("mosjid")) {
+            imageView.setImageResource(R.drawable.chorimosjid);
+            txtTitle.setText("ঐতিহাসিক ছুরুত বিবি মসজিদ");
+            textView.setText(""+VisitingPlaceInfo.chorothbibimosijid);
 
         }
 

@@ -57,4 +57,16 @@ public class VistingPlace extends AppCompatActivity {
         startActivity(intent);
 
     }
+    public void  showMajarshorif(){
+        Intent intent = new Intent(VistingPlace.this,ShowVisitingPlace.class);
+        intent.putExtra("visitng","mazar");
+        startActivity(intent);
+
+    }
+    public void  showChoribiMosjid(){
+        Intent intent = new Intent(VistingPlace.this,ShowVisitingPlace.class);
+        intent.putExtra("visitng","mosjid");
+        startActivity(intent);
+
+    }
 }

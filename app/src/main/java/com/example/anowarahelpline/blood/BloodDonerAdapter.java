@@ -30,6 +30,7 @@ public class BloodDonerAdapter extends RecyclerView.Adapter<BloodDonerAdapter.My
     private Context context;
     private ArrayList<BloodGroupModel> bLoodDonerArrayList;
 
+    private int lastPosition = -1;
 
     public BloodDonerAdapter(Context context, ArrayList<BloodGroupModel> bLoodDonerArrayList) {
         this.context = context;
@@ -93,7 +94,7 @@ public class BloodDonerAdapter extends RecyclerView.Adapter<BloodDonerAdapter.My
         });
 
         //call animation funtion
-        setAnimation(holder.itemView,position);
+       setAnimation(holder.itemView,position);
     }
 
     //send data to sqlite
@@ -133,6 +134,7 @@ public class BloodDonerAdapter extends RecyclerView.Adapter<BloodDonerAdapter.My
             imageView = itemView.findViewById(R.id.bloodDonerShowItemImg);
             callButton = itemView.findViewById(R.id.bloodDonerShowItemPhoneLogo);
             messageBtn = itemView.findViewById(R.id.bloodDonerShowItemMassage);
+
         }
     }
 
@@ -144,7 +146,10 @@ public class BloodDonerAdapter extends RecyclerView.Adapter<BloodDonerAdapter.My
 
     public void setAnimation(View itemView,int position){
 
+        if(position>lastPosition) {
             Animation slideIn = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-            itemView.startAnimation(slideIn);;
+            itemView.startAnimation(slideIn);
+            lastPosition =position;
+           }
         }
 }

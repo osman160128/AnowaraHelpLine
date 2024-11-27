@@ -4,6 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".resturant.ResturantAcitivity">
+    tools:context=".resturant.ResturantAcitivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/resturant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#75D00B"
+        android:padding="10dp"
+        android:text="রেস্টুরেন্ট"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/resturantPrograssbar"
+        android:layout_width="86dp"
+        android:layout_height="61dp"
+        app:layout_constraintBottom_toBottomOf="@+id/resturantListView"
+        app:layout_constraintEnd_toEndOf="@+id/resturant"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/resturant"
+        />
+
+    <ListView
+        android:id="@+id/resturantListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

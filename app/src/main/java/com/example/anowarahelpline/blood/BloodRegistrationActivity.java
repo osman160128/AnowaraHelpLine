@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -46,6 +47,8 @@ import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class BloodRegistrationActivity extends AppCompatActivity {
 
 
@@ -64,7 +67,7 @@ public class BloodRegistrationActivity extends AppCompatActivity {
     TextView continueBtn;
     private FirebaseAuth mAuth;
 
-    ImageView bloodSignUpImage;
+    CircleImageView bloodSignUpImage;
 
     TextView SignUpBtn;
 
@@ -148,8 +151,6 @@ public class BloodRegistrationActivity extends AppCompatActivity {
     //===============================
     public void continueBtn(){
 
-        Toast.makeText(this, "continue click", Toast.LENGTH_SHORT).show();
-
         String name = edtDonarName.getText().toString().trim();
         String mobileNumber = edtDonarMobileNumber.getText().toString().trim();
         String email = edtDonarEmail.getText().toString().trim();
@@ -163,7 +164,7 @@ public class BloodRegistrationActivity extends AppCompatActivity {
             finalMobileNumber = mobileNumber;
         }
 
-        String mobileRegex = "[+][8][8][0][1,3][6-9]";
+        String mobileRegex = "[+][8][8][0][1][3-9]";
         Matcher mobileMatcher;
         Pattern mobilePatter = Pattern.compile(mobileRegex);
         mobileMatcher = mobilePatter.matcher(finalMobileNumber);
@@ -228,26 +229,31 @@ public class BloodRegistrationActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
+                        // Registration successful, proceed with your logic
+                        SharedPreferences sharedPreferences = getSharedPreferences("BloodSharedPref", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("is already shows", true);
+                        editor.apply();
 
-                        //first i upload the image to firebase than chek blood group
-
-                        Intent intent = new Intent(BloodRegistrationActivity.this,SelectBloodActivity.class);
-
-                        intent.putExtra("name",name);
-                        intent.putExtra("mobileNumber",mobileNumber );
-                        intent.putExtra("password",password);
-                        intent.putExtra("email",email);
-                        intent.putExtra("imgUri",imageUri.toString());
+                        Intent intent = new Intent(BloodRegistrationActivity.this, SelectBloodActivity.class);
+                        intent.putExtra("name", name);
+                        intent.putExtra("mobileNumber", mobileNumber);
+                        intent.putExtra("password", password);
+                        intent.putExtra("email", email);
+                        intent.putExtra("imgUri", imageUri.toString());
                         startActivity(intent);
-
+                    } else {
+                        // Registration failed, check for specific error
+                        if (task.getException() != null && task.getException() instanceof FirebaseAuthUserCollisionException) {
+                            // If email is already in use, show the toast
+                            Toast.makeText(BloodRegistrationActivity.this, "Email is already registered", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Other errors, show general failure message
+                            Toast.makeText(BloodRegistrationActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else {
-                        Toast.makeText(BloodRegistrationActivity.this, "not succes", Toast.LENGTH_SHORT).show();
-                    }
-
                 }
             });
-
 
         }
     }

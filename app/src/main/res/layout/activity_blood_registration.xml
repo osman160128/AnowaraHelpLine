@@ -27,7 +27,7 @@
                 android:layout_height="200dp"
                 android:background="@drawable/cicrle_image_view"
                 />
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/bloodSignUpImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"

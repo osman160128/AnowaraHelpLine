@@ -42,8 +42,8 @@ public class BloodShowActvity extends AppCompatActivity {
     FrameLayout frameLayout;
     NavigationView navigationView;
 
-    CircleImageView imgView;
-    TextView txtName;
+    CircleImageView imgView,toolbarImg;
+    TextView txtName,toolbarName;
     FragmentManager fragmentManager = getSupportFragmentManager();
 
     public static String bloodGroup="";
@@ -54,23 +54,6 @@ public class BloodShowActvity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_show_actvity);
 
-        if(bloodGroup.isEmpty()){
-            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-
-            bloodGroup = sharedPreferences.getString("bloodGroup","");
-
-        }
-        else {
-            // Get a reference to the SharedPreferences object
-            SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-            // Get an editor to write to the SharedPreferences
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("bloodGroup", bloodGroup);
-            // Apply the changes
-            editor.apply();
-
-
-        }
 
         drawerLayout = findViewById(R.id.bloodDonerDrawerLayout);
         materialToolbar = findViewById(R.id.bloodDonerToolBarLayout);
@@ -83,10 +66,13 @@ public class BloodShowActvity extends AppCompatActivity {
 
         imgView =  navigationView.getHeaderView(0).findViewById(R.id.headerImage);
         txtName =  navigationView.getHeaderView(0).findViewById(R.id.headerName);
+        toolbarImg = findViewById(R.id.toolbarProfileImg);
+        toolbarName = findViewById(R.id.toolbarProfileName);
 
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.bloodDonerFrameLyout,new ShowAllBloodFragment());
+       // fragmentTransaction.replace(R.id.bloodDonerFrameLyout,new ShowAllBloodFragment());
+        fragmentTransaction.replace(R.id.bloodDonerFrameLyout,new BloodShowFragment());
         fragmentTransaction.commit();
 
         //get data from firebase according to blood group
@@ -100,14 +86,13 @@ public class BloodShowActvity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(toggl);
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if(item.getItemId()==R.id.navigationHome){
                     //show all blood doner togather fragment
                     FragmentTransaction fragmentTransaction1  =  fragmentManager.beginTransaction();
-                    fragmentTransaction1.replace(R.id.bloodDonerFrameLyout,new ShowAllBloodFragment());
+                    fragmentTransaction1.replace(R.id.bloodDonerFrameLyout,new BloodShowFragment());
                     fragmentTransaction1.commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
@@ -126,8 +111,18 @@ public class BloodShowActvity extends AppCompatActivity {
                     fragmentTransaction1.replace(R.id.bloodDonerFrameLyout, new BloodHistoryFragment());
                     fragmentTransaction1.commit();
                     drawerLayout.closeDrawer(GravityCompat.START);
+                } else if (item.getItemId()==R.id.navigationLogout) {
+                    mAuth.signOut();
+                    // Get a reference to the SharedPreferences object
+                    SharedPreferences sharedPreferences = getSharedPreferences("BloodSharedPref", MODE_PRIVATE);
+                    // Get an editor to write to the SharedPreferences
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("is already shows", false);
+                    // Apply the changes
+                    editor.apply();
+                    startActivity(new Intent(BloodShowActvity.this, BloodLoginActivity.class));
+                    finish();
                 }
-
 
 
                 return true;
@@ -210,25 +205,24 @@ public class BloodShowActvity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(BloodShowActvity.this, "pppppppp", Toast.LENGTH_SHORT).show();
                 if (snapshot.exists()){
 
                     BloodGroupModel bloodGroupModel = snapshot.getValue(BloodGroupModel.class);
 
                     String name = bloodGroupModel.getName();
                     String imgUrl = bloodGroupModel.getDownloadImgUri();
-
-                    Log.d("osman",name);
-                    Log.d("osman",imgUrl);
-
                     txtName.setText(name);;
-
+                    toolbarName.setText(name);
 
                     Picasso.get()
                             .load(imgUrl)
                             .fit()
                             .centerCrop()
                             .into(imgView);
+
+                    Picasso.get().load(imgUrl)
+                            .fit()
+                            .into(toolbarImg);
 
                 }
                 else {

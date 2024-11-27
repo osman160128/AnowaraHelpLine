@@ -100,7 +100,7 @@ public class UnionProsihod extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(UnionProsihod.this, ""+error, Toast.LENGTH_SHORT).show();
-                Log.d("union error",error.getMessage());
+                Log.d("un   ion error",error.getMessage());
                 progressBar.setVisibility(View.GONE);
 
             }

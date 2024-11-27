@@ -51,9 +51,9 @@ public class BloodLoginActivity extends AppCompatActivity {
         activityBloodLoginBinding = DataBindingUtil.setContentView(this, R.layout.activity_blood_login);
         activityBloodLoginBinding.setBloodlogin(this);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("BloodSharedPref", MODE_PRIVATE);
 
-        boolean alreadyShows = sharedPreferences.getBoolean("already shows", false);
+        boolean alreadyShows = sharedPreferences.getBoolean("is already shows", false);
 
         if (alreadyShows) {
             Intent intent = new Intent(BloodLoginActivity.this, BloodShowActvity.class);
@@ -108,10 +108,10 @@ public class BloodLoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
 
                         // Get a reference to the SharedPreferences object
-                        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                        SharedPreferences sharedPreferences = getSharedPreferences("BloodSharedPref", MODE_PRIVATE);
                         // Get an editor to write to the SharedPreferences
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putBoolean("already shows", true);
+                        editor.putBoolean("is already shows", true);
                         // Apply the changes
                         editor.apply();
 
@@ -169,13 +169,7 @@ public class BloodLoginActivity extends AppCompatActivity {
 
 
     public void goToRegistration() {
-        // Get a reference to the SharedPreferences object
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        // Get an editor to write to the SharedPreferences
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean("already shows", true);
-        // Apply the changes
-        editor.apply();
+
         startActivity(new Intent(BloodLoginActivity.this, BloodRegistrationActivity.class));
 
     }
@@ -335,7 +329,7 @@ public class BloodLoginActivity extends AppCompatActivity {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(BloodLoginActivity.this, "pppppppp", Toast.LENGTH_SHORT).show();
+
                 if (snapshot.exists()) {
 
                     startActivity(new Intent(BloodLoginActivity.this,BloodShowActvity.class));
@@ -346,6 +340,7 @@ public class BloodLoginActivity extends AppCompatActivity {
                     //and show alart to login again;
 
                     showALartDialog();
+
                 }
             }
 
